@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacklet - Bookmarklet Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .bookmarklet-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .instructions {
+            margin-top: 20px;
+        }
+        .sample-content {
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        .drag-area {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .bookmarklet-link {
+            padding: 8px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 0 10px 10px 0;
+            display: inline-block;
+        }
+        .bookmarklet-description {
+            margin-top: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+        .confetti {
+            background-color: #FF9800;
+        }
+        .invert {
+            background-color: #9C27B0;
+        }
+        .rotate {
+            background-color: #673AB7;
+        }
+        .cat {
+            background-color: #4CAF50;
+        }
+        .productivity {
+            background-color: #2196F3;
+        }
+        .meme {
+            background-color: #E91E63;
+        }
+        .bookmarklet-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .bookmarklet-card {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        .bookmarklet-card h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .tab-container {
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 0 5px 5px 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hacklet - Fun Bookmarklet Collection</h1>
+    
+    <div class="bookmarklet-container">
+        <h2>Your Bookmarklets</h2>
+        <p>Drag any of these links to your bookmarks bar:</p>
+        
+        <div class="bookmarklet-grid">
+            <div class="bookmarklet-card">
+                <h3>Confetti Party</h3>
+                <div class="drag-area">
+                    <a href="" id="confetti-link" class="bookmarklet-link confetti">Confetti Party</a>
+                </div>
+                <p class="bookmarklet-description">Adds a colorful confetti animation to any webpage</p>
+            </div>
+            
+            <div class="bookmarklet-card">
+                <h3>Image Color Inverter</h3>
+                <div class="drag-area">
+                    <a href="" id="color-inverter-link" class="bookmarklet-link invert">Color Inverter</a>
+                </div>
+                <p class="bookmarklet-description">Inverts the colors of images on the webpage</p>
+            </div>
+            
+            <div class="bookmarklet-card">
+                <h3>Image Rotator</h3>
+                <div class="drag-area">
+                    <a href="" id="rotator-link" class="bookmarklet-link rotate">Image Rotator</a>
+                </div>
+                <p class="bookmarklet-description">Rotates all images by 180 degrees</p>
+            </div>
+            
+            <div class="bookmarklet-card">
+                <h3>Dancing Cat</h3>
+                <div class="drag-area">
+                    <a href="javascript:(function(){var d=document.createElement('img');d.src='https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif';d.style.cssText='position:fixed;bottom:10px;right:10px;width:120px;cursor:pointer;z-index:2147483647';document.body.appendChild(d);})();" class="bookmarklet-link cat">Dancing Cat</a>
+                </div>
+                <p class="bookmarklet-description">Adds a dancing cat to the corner of any webpage</p>
+            </div>
+            
+            <div class="bookmarklet-card">
+                <h3>Productivity Overlay</h3>
+                <div class="drag-area">
+                    <a href="" id="productivity-link" class="bookmarklet-link productivity">Productivity</a>
+                </div>
+                <p class="bookmarklet-description">Adds a productivity dashboard with timer and todo list</p>
+            </div>
+            
+            <div class="bookmarklet-card">
+                <h3>Meme Replacer</h3>
+                <div class="drag-area">
+                    <a href="javascript:(function(){var M=['https://i.imgflip.com/1bij.jpg','https://i.imgflip.com/1ur9b0.jpg','https://i.imgflip.com/30b1gx.jpg'];for(var i=0;i<document.images.length;i++){var img=document.images[i];if(img.naturalWidth>60&&img.naturalHeight>60&&!img.dataset.memed){img.dataset.memed='true';img.dataset.orig=img.src;img.src=M[Math.floor(Math.random()*M.length)];}}})();" class="bookmarklet-link meme">Meme Replacer</a>
+                </div>
+                <p class="bookmarklet-description">Replaces all images on the page with random memes</p>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Drag any of the above links to your bookmarks bar</li>
+                <li>Navigate to any website</li>
+                <li>Click on the bookmark to activate the effect</li>
+                <li>Most bookmarklets can be toggled on/off by clicking again</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="tab-container">
+        <button class="tab active" onclick="openTab(event, 'preview')">Preview</button>
+        <button class="tab" onclick="openTab(event, 'code')">Code Examples</button>
+        <button class="tab" onclick="openTab(event, 'about')">About</button>
+    </div>
+    
+    <div id="preview" class="tab-content active">
+        <h2>Sample Content for Testing</h2>
+        <p>This is a sample paragraph that your bookmarklet might modify.</p>
+        <p>Here's another paragraph with <strong>bold</strong> and <em>italic</em> text.</p>
+        
+        <h3>Sample Images</h3>
+        <img src="https://picsum.photos/200/300" alt="Random Image 1">
+        <img src="https://picsum.photos/200/301" alt="Random Image 2">
+        <img src="https://picsum.photos/201/300" alt="Random Image 3">
+        
+        <h3>Sample List</h3>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    
+    <div id="code" class="tab-content">
+        <h2>Bookmarklet Code</h2>
+        <p>These bookmarklets are created with pure JavaScript and can be used on any website. Here's a simple example of how a bookmarklet works:</p>
+        
+        <pre><code>javascript:(function() {
+  // Your JavaScript code goes here
+  alert('Hello from a bookmarklet!');
+})();</code></pre>
+        
+        <p>Each bookmarklet follows this pattern but with more complex functionality.</p>
+    </div>
+    
+    <div id="about" class="tab-content">
+        <h2>About This Project</h2>
+        <p>This collection of bookmarklets was created for Hack Club's "Hacklet" You Ship, We Ship challenge. The goal was to create fun, useful, or cursed bookmarklets that deserve their own domain.</p>
+        
+        <h3>What's a Bookmarklet?</h3>
+        <p>A bookmarklet is a bookmark stored in a web browser that contains JavaScript commands. When clicked, it performs some function on the current webpage instead of navigating to a new page.</p>
+        
+        <p>Bookmarklets are a lightweight and accessible way to enhance your browsing experience without installing extensions.</p>
+        
+        <p>Learn more about the Hack Club challenge at <a href="https://forms.hackclub.com/hacklet" target="_blank">forms.hackclub.com/hacklet</a></p>
+    </div>
+    
+    <footer>
+        Created for Hack Club's Hacklet Challenge - 2025
+    </footer>
+    
+    <script>
+        function updateBookmarkletLink(elementId, jsFilePath) {
+            fetch(jsFilePath)
+                .then(response => response.text())
+                .then(code => {
+                    const bookmarkletCode = code
+                        .replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '') // Remove comments
+                        .replace(/\s+/g, ' ') // Compress whitespace
+                        .trim();
+                        
+                    document.getElementById(elementId).href = 
+                        `javascript:(function(){${bookmarkletCode}})();`;
+                })
+                .catch(err => {
+                    console.error(`Error loading ${jsFilePath}:`, err);
+                });
+        }
+        
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            const tabs = document.getElementsByClassName("tab");
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+        
+        window.addEventListener('load', () => {
+            updateBookmarkletLink('confetti-link', 'bookmarklets/confetti.js');
+            updateBookmarkletLink('color-inverter-link', 'bookmarklets/image-color-inverter.js');
+            updateBookmarkletLink('rotator-link', 'bookmarklets/image-rotator.js');
+            updateBookmarkletLink('productivity-link', 'bookmarklets/productivity-overlay.js');
+        });
+    </script>
+</body>
+</html>
